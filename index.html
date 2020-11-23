@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8></meta>
+        <title>My first three.js</title>
+        <style>
+            body {
+
+            }
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="./three.js-master/three.js-master/build/three.js"></script>
+        <!-- <script src="./three.js-master/three.js-master/src/Three.js"></script> -->
+        <script>
+            var scene = new THREE.Scene();
+            // 透视相机（透视视野） 我们把摄像机理解成用户的眼睛
+            // (摄像机视锥体垂直视野角度, 摄像机视锥体长宽比, 摄像机视锥体近端面 = 离我们眼睛最近的面距离摄像机0.1像素, 摄像机视锥体远端面 = 离摄像机最远的地方是1000像素远)
+            var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
+            document.body.appendChild( renderer.domElement );
+
+            var geometry = new THREE.BoxGeometry(1, 1, 1); // 创建一个盒子(立方体)
+            var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            var cube = new THREE.Mesh(geometry, material);
+            scene.add( cube );
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01; // x方向旋转
+                cube.rotation.y += 0.01; // y方向旋转
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+        </script>
+    </body>
+</html>
