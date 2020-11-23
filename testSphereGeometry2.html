@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset=utf-8></meta>
-        <title>自由几何体</title>
+        <title>自由几何体2</title>
         <style>
             body {
 
@@ -20,7 +20,6 @@
 
             var scene = new THREE.Scene();
 
-            
            /**
              * 添加辅助坐标轴
              */
@@ -43,10 +42,35 @@
             // 设置几何体attributes属性的位置属性
             geometry.attributes.position = attribute;
 
+            var colors = new Float32Array([
+                1, 0, 0, // 顶点1颜色
+                0, 1, 0, // 顶点2颜色
+                0, 0, 1, // 顶点3颜色
+
+                1, 1, 0, // 顶点4颜色
+                0, 1, 1, // 顶点5颜色
+                1, 0, 1, // 顶点6颜色
+            ]);
+
+            // 设置几何体attributes属性的颜色color属性
+            geometry.attributes.color = new THREE.BufferAttribute(colors, 3); // 3个为一组表示一个顶点
+
+            // // 点 材质对象
+            // var material = new THREE.PointsMaterial({
+            //     // 使用顶点言责数据渲染模型, 不需要再定义color属性
+            //     vertexColors: THREE.VertexColors,
+            //     size: 10.0, // 点对象像素尺寸
+            // });
+
+            // // 点渲染模式 点模型对象Points
+            // var points = new THREE.Points(geometry, material); // 点模型对象
+            // scene.add(points);
+            // 网状(面) 材质对象
             var material = new THREE.MeshBasicMaterial({
-                color: 0x0000ff, // 三角面颜色
+                // color: 0x0000ff, // 三角面颜色
+                vertexColors: THREE.VertexColors, // 使用顶点着色 http://www.yanhuangxueyuan.com/threejs/docs/index.html#api/zh/materials/Material
                 side: THREE.DoubleSide // 两面可见
-            }); // 材质对象
+            });
 
             var mesh = new THREE.Mesh(geometry, material);
 
