@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset=utf-8></meta>
-        <title>自由几何体2</title>
+        <title>自由几何体2 着色</title>
         <style>
             body {
 
@@ -53,7 +53,7 @@
             ]);
 
             // 设置几何体attributes属性的颜色color属性
-            geometry.attributes.color = new THREE.BufferAttribute(colors, 3); // 3个为一组表示一个顶点
+            geometry.attributes.color = new THREE.BufferAttribute(colors, 3); // 3个为一组表示一个颜色RGBA
 
             // // 点 材质对象
             // var material = new THREE.PointsMaterial({

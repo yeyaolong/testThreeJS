@@ -33,26 +33,29 @@
                 0, 0, 0, // 顶点1
                 50, 0, 0, // 顶点2
                 0, 100, 0, // 顶点3
-                0, 0, 10, // 顶点4
-                0, 0, 100, // 顶点5
-                50, 0, 10, // 顶点6
+                // 50, 100, 0, // 顶点4
+
+                0, 0, 10, // 顶点5
+                0, 0, 100, // 顶点6
+                50, 0, 10, // 顶点7
+                // 50, 0, 100 // 顶点8
             ]);
 
             // 创建属性缓冲区对象
-            var attribute = new THREE.BufferAttribute(vertices, 3); // 3个为一组, 表示一个顶点的xyz坐标
+            var attribute = new THREE.BufferAttribute(vertices, 3); // 3个为一组, 表示一个顶点的xyz坐标  三个点能确定一个面
             // 设置几何体attributes属性的位置属性
             geometry.attributes.position = attribute;
-
-            var material = new THREE.MeshBasicMaterial({
-                color: 0x0000ff, // 三角面颜色
-                side: THREE.DoubleSide // 两面可见
-            }); // 材质对象
+            // 材质对象
+            // var material = new THREE.MeshBasicMaterial({
+            //     color: 0x0000ff, // 三角面颜色
+            //     side: THREE.DoubleSide // 两面可见
+            // }); // 网格模型Mesh
 
             var mesh = new THREE.Mesh(geometry, material);
 
             scene.add(mesh);
             // 聚光灯
-            var spotLight0 = new THREE.SpotLight(0xcccccc); // 实例化            
+            var spotLight0 = new THREE.SpotLight(0xcccccc); // 实例化
             spotLight0.position.set(-100, 0, 100);
             spotLight0.intensity = 1.0; // 光线强度 默认1.0
             scene.add(spotLight0);
